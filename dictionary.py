@@ -1,9 +1,11 @@
 class Dictionary:
-    def __init__(self):
-        pass
 
-    def addWord(self):
-        pass
+    def __init__(self):
+        self.dizionario = []
+
+
+    def addWord(self, traduzioni):
+        self.dizionario.append(traduzioni)
 
     def translate(self):
         pass

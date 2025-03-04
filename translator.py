@@ -1,22 +1,40 @@
+from dictionary import Dictionary as di
+
 class Translator:
 
     def __init__(self):
-        pass
+        self.d = di()
 
     def printMenu(self):
         # 1. Aggiungi nuova parola
         # 2. Cerca una traduzione
         # 3. Cerca con wildcard
         # 4. Exit
-        pass
+        print(f"{"-"*35}\n{"Translator Alien-Italian"}\n{"-"*35}\n"
+              f"1. Aggiungi nuova parola\n"
+              f"2. Cerca una traduzione\n"
+              f"3. Cerca con wildcard\n"
+              f"4. Exit\n"
+              f"{"-"*35}")
 
     def loadDictionary(self, dict):
         # dict is a string with the filename of the dictionary
-        pass
+        with open(dict, 'r') as f:
+            lines = f.readlines()
+        result = []
+        for line in lines:
+            result.append(line.strip().split(" "))
+            self.d.addWord(result)
+
 
     def handleAdd(self, entry):
         # entry is a tuple <parola_aliena> <traduzione1 traduzione2 ...>
-        pass
+        mystr = entry.strip().split(" ")
+        if len(mystr) <= 1:
+            print("Inserisci le parole nel formato corretto")
+        else:
+            self.d.addWord(mystr)
+            print("Parola aggiunta con successo\n\n")
 
     def handleTranslate(self, query):
         # query is a string <parola_aliena>
