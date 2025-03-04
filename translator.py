@@ -21,24 +21,29 @@ class Translator:
         # dict is a string with the filename of the dictionary
         with open(dict, 'r') as f:
             lines = f.readlines()
-        result = []
         for line in lines:
-            result.append(line.strip().split(" "))
+            result = line.strip().split(" ")
             self.d.addWord(result)
 
 
     def handleAdd(self, entry):
-        # entry is a tuple <parola_aliena> <traduzione1 traduzione2 ...>
+        # entry is a tuple <parola_aliena>
         mystr = entry.strip().split(" ")
         if len(mystr) <= 1:
             print("Inserisci le parole nel formato corretto")
         else:
             self.d.addWord(mystr)
-            print("Parola aggiunta con successo\n\n")
 
     def handleTranslate(self, query):
         # query is a string <parola_aliena>
-        pass
+        value = self.d.translate(query)
+        if value == None:
+            print("Parola non trovata")
+        else:
+            mystr = ""
+            for i in value:
+                mystr += i + " "
+            print(f"La traduzione è: {mystr}")
 
     def handleWildCard(self,query):
         # query is a string with a ? --> <par?la_aliena>
