@@ -1,5 +1,7 @@
 import translator as tr
 def main():
+
+    # creazione traduttore
     t = tr.Translator()
 
     # apertura e salvataggio del file e i suoi dati
@@ -34,7 +36,13 @@ def main():
 
 
         elif int(txtIn) == 3:
-            pass
+            print(f"{"-" * 35}")
+            txtIn = input("Inserisci la parola aliena da tradurre con un carattere '?' sulla lettera che non di sa: ")
+            s = t.handleWildCard(txtIn)
+            if s != "":
+                print(f"La parola cercata può essere tradotta in: {s}")
+            else:
+                print("La parola non ha riscontri")
 
         # break
         elif int(txtIn) == 4:
