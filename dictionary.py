@@ -18,7 +18,10 @@ class Dictionary:
         s = ""
         for key in self.dizionario.keys():
             if key[:i] == query.split("?")[0] and key[i+1:] == query.split("?")[1]:
-                s+="\n"
+                if s == "":
+                    s = f"La parola {key} corrisponde a:"
+                else:
+                    s+=f"\nLa parola {key} corrisponde a:"
                 for mystr in self.dizionario[key]:
                     s += " " + mystr
         return s
